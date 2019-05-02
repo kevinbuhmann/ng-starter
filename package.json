@@ -2,12 +2,10 @@
   "name": "ng-starter",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
     "start": "ng serve",
-    "build": "yarn run lint && ng build",
-    "test": "ng test",
-    "lint": "ts-node ./build/lint.ts",
-    "e2e": "ng e2e"
+    "build": "ts-node ./build/build.ts",
+    "test": "ts-node ./build/test.ts",
+    "lint": "ts-node ./build/lint.ts"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +33,7 @@
     "@types/js-beautify": "1.8.0",
     "@types/lodash": "4.14.123",
     "@types/node": "10.14.4",
+    "@types/rimraf": "2.0.2",
     "chalk": "2.4.2",
     "codelyzer": "4.5.0",
     "jasmine-core": "3.4.0",
@@ -48,6 +47,7 @@
     "lodash": "4.17.11",
     "prettier": "1.17.0",
     "protractor": "5.4.2",
+    "rimraf": "2.6.3",
     "sass-lint": "1.13.1",
     "ts-node": "8.1.0",
     "tslint": "5.16.0",
