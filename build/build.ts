@@ -55,11 +55,13 @@ function clean() {
 async function build() {
   const configuration = options.prod ? 'production' : '';
 
-  const ngOptions = ` --configuration ${configuration}` + ` ${options.watch ? '--watch' : ''}`;
+  const ngOptions =
+    ` --configuration ${configuration}` +
+    ` ${options.watch ? '--watch' : ''}` +
+    ` ${options.watch ? '' : '--aot'}` +
+    ` ${options.stats ? '--stats-json' : '--no-stats-json'}`;
 
-  const ngClientOptions = ` ${options.watch ? '' : '--aot'}` + ` ${options.stats ? '--stats-json' : '--no-stats-json'}`;
-
-  const clientBuild = collapseSpaces(`ng build ${ngOptions} ${ngClientOptions}`);
+  const clientBuild = collapseSpaces(`ng build ${ngOptions}`);
 
   await execute(clientBuild);
 }
