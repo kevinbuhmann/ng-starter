@@ -33,7 +33,7 @@
     "@types/lodash": "4.14.136",
     "@types/node": "12.12.30",
     "@types/rimraf": "2.0.2",
-    "chalk": "2.4.2",
+    "chalk": "3.0.0",
     "codelyzer": "5.2.1",
     "jasmine-core": "3.4.0",
     "jasmine-spec-reporter": "4.2.1",
