@@ -9,8 +9,8 @@ export interface ExecuteResult {
   stdout: string;
   stderr: string;
   error?: any;
-  code?: number;
-  signal?: string;
+  code?: number | null;
+  signal?: string | null;
 }
 
 export function execute(command: string, options?: SpawnOptions, bailOnError = true) {
@@ -32,7 +32,7 @@ function promisifyProcess(command: string, childProcessFn: () => ChildProcess, b
 
     let done = false;
 
-    const handleResult = (error: Error, code?: number, signal?: string) => {
+    const handleResult = (error: Error | undefined, code?: number | null, signal?: string | null) => {
       if (done === false) {
         result.error = error;
         result.code = code;
@@ -71,11 +71,11 @@ function promisifyProcess(command: string, childProcessFn: () => ChildProcess, b
   });
 }
 
-function makeChildProcessEnv(environment: { [key: string]: string }) {
+function makeChildProcessEnv(environment: { [key: string]: string | undefined }) {
   const env = { ...process.env, ...environment };
 
   const pathKey = getPathKey();
-  const paths = [...process.env[pathKey].split(path.delimiter), path.resolve('./node_modules/.bin')];
+  const paths = [...(process.env[pathKey]?.split(path.delimiter) || []), path.resolve('./node_modules/.bin')];
   env[pathKey] = paths.join(path.delimiter);
 
   return env;

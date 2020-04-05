@@ -19,6 +19,6 @@ describe('AppComponent', () => {
   });
 
   it('should render title in a h1 tag', () => {
-    expect(nativeElement.querySelector('h1').textContent).toBe('Welcome to ng-starter!');
+    expect(nativeElement.querySelector('h1')?.textContent).toBe('Welcome to ng-starter!');
   });
 });
